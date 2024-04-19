@@ -1,13 +1,14 @@
 import express from 'express';
 import { ServiceRegistry } from '../../types';
-import { LogMiddlewareModule } from './log-middleware';
+import { makeCtxMiddleware } from './ctx-middleware';
+import { makeLogMiddleware } from './log-middleware';
 
 export function $onBind(sr: ServiceRegistry) {
-  const app = express();
-
-  app.use(express.json());
-  app.use(express.urlencoded({ extended: true }));
-  app.use(new LogMiddlewareModule(sr).makeMiddleware());
+  const app = express()
+    .use(express.json())
+    .use(express.urlencoded({ extended: true }))
+    .use(makeCtxMiddleware(sr))
+    .use(makeLogMiddleware(sr));
 
   sr.express = sr.express || {};
   sr.express.app = app;

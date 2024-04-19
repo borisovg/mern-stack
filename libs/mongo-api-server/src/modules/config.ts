@@ -11,6 +11,8 @@ const {
   NODE_ENV = '',
 } = process.env;
 
+const pinoOptions: LoggerOptions = {};
+
 export function $onBind(app: ServiceRegistry) {
   app.config = config;
 }
@@ -23,7 +25,7 @@ export const config = {
   logger: {
     ecsConfig: {},
     level: LOG_LEVEL,
-    pinoOptions: {} as LoggerOptions,
+    pinoOptions,
   },
   mongo: {
     db: MONGO_DB,

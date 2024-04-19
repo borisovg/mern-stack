@@ -1,0 +1,5 @@
+services:
+  mongo:
+    image: docker.io/library/mongo:latest
+    ports:
+      - 27017:27017

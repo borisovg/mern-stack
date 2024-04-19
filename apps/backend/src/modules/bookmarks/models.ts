@@ -18,6 +18,8 @@ export class BookmarksModel {
   }
 
   async list() {
-    return this.sr.bookmarks.collection.find<Bookmark>({}).toArray();
+    return this.sr.bookmarks.collection
+      .find<Bookmark>({}, { projection: { _id: 0 } })
+      .toArray();
   }
 }

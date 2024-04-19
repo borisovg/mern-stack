@@ -4,40 +4,36 @@ import type { ServiceRegistry } from '../../types';
 
 type GetEventFn = ReturnType<EcsModule['makeEventFn']>;
 
-export class LogMiddlewareModule {
-  constructor(private sr: ServiceRegistry) {}
-
-  logRequest(req: Request) {
-    this.sr.log.debug({
+export function makeLogMiddleware(sr: ServiceRegistry) {
+  function logRequest(req: Request) {
+    sr.log.debug({
       http: { request: { method: req.method } },
       message: 'http request',
       url: { path: req.url },
     });
   }
 
-  logResponse(req: Request, res: Response, getEvent: GetEventFn) {
-    this.sr.log.info({
+  function logResponse(req: Request, res: Response, getEvent: GetEventFn) {
+    sr.log.info({
       event: getEvent('http-response'),
       http: {
         request: { method: req.method },
         response: { status_code: res.statusCode },
       },
       message: 'http response',
-      url: { path: req.url },
+      url: { path: req.url, route: req.route.path },
     });
   }
 
-  makeMiddleware() {
-    return (req: Request, res: Response, next: () => void) => {
-      const getEvent = this.sr.ecs.makeEventFn();
+  return (req: Request, res: Response, next: () => void) => {
+    const getEvent = sr.ecs.makeEventFn();
 
-      this.logRequest(req);
+    logRequest(req);
 
-      res.once('finish', () => {
-        this.logResponse(req, res, getEvent);
-      });
+    res.once('finish', () => {
+      logResponse(req, res, getEvent);
+    });
 
-      next();
-    };
-  }
+    next();
+  };
 }
