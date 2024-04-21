@@ -1,7 +1,7 @@
 MOCHA_OPTS := --bail
-TS_FILES := $(shell find src/ -name '*.ts')
 NPM := pnpm
 NPM_BIN := ./node_modules/.bin
+TS_FILES := $(shell find src/ -name '*.ts')
 
 all: dist
 
@@ -15,7 +15,7 @@ help:
 clean:
 	rm -rf coverage dist node_modules
 
-dist: node_modules $(TS_FILES) tsconfig.json tsconfig-build.json Makefile
+dist: node_modules $(TS_FILES) tsconfig.json Makefile
 	rm -rf $@
 	$(NPM_BIN)/tsc -p tsconfig-build.json
 
@@ -29,10 +29,9 @@ node_modules: package.json
 	$(NPM) install || (rm -rf $@; exit 1)
 	test -d $@ && touch $@ || true
 
-## start-dev:	start application in develoment mode
 .PHONY: start-dev
-start-dev:
-	LOG_LEVEL=debug $(NPM_BIN)/ts-node -e 'require("./src/index.ts").start()'
+start-dev: node_modules
+	while true; do NODE_ENV=production LOG_LEVEL=debug $(NPM_BIN)/nodemon -w ./src ./src/index.ts; sleep 1; done
 
 ## test:		run unit tests (set FILE env variable to run test for that file only)
 .PHONY: test
@@ -44,3 +43,6 @@ test:
 	$(NPM_BIN)/c8 --reporter=none $(NPM_BIN)/ts-mocha $(MOCHA_OPTS) 'src/**/*.spec.ts' \
 		&& $(NPM_BIN)/c8 report --all --clean -n src -x 'src/**/*.spec.ts' -x 'src/types.*' --reporter=text
 endif
+
+$(NPM_LOCK):
+	$(NPM) install && touch $@

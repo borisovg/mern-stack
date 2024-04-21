@@ -1,11 +1,10 @@
 import { deepStrictEqual, strictEqual } from 'assert';
-import { config, start } from '../../..';
+import { config, start, type Registry } from '../..';
 import { createSandbox } from 'sinon';
 import { HttpClient } from 'test-helpers';
-import { type ServiceRegistry } from '../../../types';
 
-describe('modules/bookmarks/api/delete', () => {
-  const sr = {} as ServiceRegistry;
+describe('modules/api/delete', () => {
+  const sr = {} as Registry;
   const client = new HttpClient({ port: 10001 });
   const sandbox = createSandbox();
   const mockCollection = {
@@ -53,7 +52,7 @@ describe('modules/bookmarks/api/delete', () => {
   });
 
   it('should return 500 if model call throws an error', async () => {
-    sandbox.stub(sr.bookmarks.model, 'delete').throws('Test Error');
+    sandbox.stub(sr.bookmarks, 'delete').throws('Test Error');
 
     const { statusCode } = await client.delete('/api/bookmarks/foo');
     strictEqual(statusCode, 500);

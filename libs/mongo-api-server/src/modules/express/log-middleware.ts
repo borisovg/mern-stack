@@ -21,7 +21,7 @@ export function makeLogMiddleware(sr: ServiceRegistry) {
         response: { status_code: res.statusCode },
       },
       message: 'http response',
-      url: { path: req.url, route: req.route.path },
+      url: { path: req.url, route: req.route?.path },
     });
   }
 

@@ -1,9 +1,9 @@
 import { mongoApiServerConfig as config, load } from 'mongo-api-server';
-import type { ServiceRegistry } from './types';
+import type { Registry } from './types';
 
-export { config };
+export { config, type Registry };
 
-export async function start(sr?: ServiceRegistry) {
+export function start(sr?: Registry) {
   return load(`${__dirname}/modules`, sr);
 }
 

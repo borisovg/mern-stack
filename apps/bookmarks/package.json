@@ -1,11 +1,15 @@
 {
   "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "start:dev": "make start-dev",
+    "lint": "make lint",
+    "prepublishOnly": "make",
     "test": "make test"
   },
   "dependencies": {
     "mongo-api-server": "workspace:^",
+    "test-helpers": "workspace:^",
     "tslib": "^2.6.2",
     "zod": "^3.22.5"
   },
@@ -20,13 +24,28 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
     "mocha": "^10.4.0",
+    "nodemon": "^3.1.0",
     "prettier": "^3.2.5",
     "sinon": "^17.0.1",
-    "test-helpers": "workspace:^",
     "ts-mocha": "^10.0.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.5",
-    "undici": "^6.13.0"
+    "typescript": "^5.4.5"
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "root": true
+  },
+  "prettier": {
+    "singleQuote": true,
+    "tabWidth": 2
   },
   "packageManager": "pnpm@9.0.4+sha512.c374b52de3de88c58fd8333df664a737279cdb0e1344ba4054d3b1fffa9a1a3670854f755dca4f16adea3f14be9896a7fcaf167409fe0c1ad60475271dafe81a"
 }

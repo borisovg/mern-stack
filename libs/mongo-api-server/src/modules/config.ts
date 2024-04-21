@@ -7,7 +7,7 @@ const {
   HTTP_PORT = '8000',
   LOG_LEVEL = 'info',
   MONGO_DB = 'test',
-  MONGO_URI = '',
+  MONGO_URI = 'mongodb://localhost:27017/test',
 } = process.env;
 
 const pinoOptions: LoggerOptions = {};
@@ -28,7 +28,7 @@ export const config = {
   },
   mongo: {
     db: MONGO_DB,
-    uri: MONGO_URI || `mongodb://localhost:27017/${MONGO_DB}`,
+    uri: MONGO_URI,
   },
   server: {
     port: parseInt(HTTP_PORT, 10),
