@@ -2,7 +2,7 @@ import { createServer, type Server } from 'http';
 import { ServiceRegistry } from '../../types';
 import { makeExpressApp } from './app';
 import { Request, Response } from 'express';
-import { makeError } from './return-error';
+import { makeError } from './make-error';
 
 export function $onBind(sr: ServiceRegistry) {
   sr.express = new ExpressModule(sr);
@@ -36,19 +36,19 @@ export class ExpressModule {
     this.server = createServer(app);
   }
 
-  returnError(req: Request, res: Response, err: unknown, statusCode?: number) {
-    const error = makeError(err, statusCode);
+  returnError(req: Request, res: Response, err: unknown, code?: number) {
+    const { message, cause, stack, statusCode } = makeError(err, code);
 
     this.sr.log.warn({
-      error,
+      error: { message, cause, stack },
       http: {
         request: { method: req.method },
-        response: { status_code: error.statusCode },
+        response: { status_code: statusCode },
       },
       message: 'http request error',
       url: { path: req.url },
     });
 
-    res.status(error.statusCode).json({ error });
+    res.status(statusCode).json({ error: { message, cause } });
   }
 }

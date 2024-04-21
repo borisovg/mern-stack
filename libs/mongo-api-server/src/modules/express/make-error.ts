@@ -20,6 +20,6 @@ export function formatError(err: unknown) {
   const err2 = err as Record<string, unknown>;
 
   return typeof err === 'object'
-    ? { ...err2, code: err2.code, name: err2.name, stack: err2.stack }
+    ? { ...err2, code: err2.code, name: err2.name }
     : err;
 }
