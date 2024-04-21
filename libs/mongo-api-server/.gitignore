@@ -1,6 +1,0 @@
-coverage
-dist
-node_modules
-package-lock.json
-pnpm-lock.yarn
-yarn.loc

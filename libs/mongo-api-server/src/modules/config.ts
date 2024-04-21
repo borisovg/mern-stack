@@ -8,7 +8,6 @@ const {
   LOG_LEVEL = 'info',
   MONGO_DB = 'test',
   MONGO_URI = '',
-  NODE_ENV = '',
 } = process.env;
 
 const pinoOptions: LoggerOptions = {};
@@ -31,7 +30,6 @@ export const config = {
     db: MONGO_DB,
     uri: MONGO_URI || `mongodb://localhost:27017/${MONGO_DB}`,
   },
-  nodeEnv: NODE_ENV,
   server: {
     port: parseInt(HTTP_PORT, 10),
   },

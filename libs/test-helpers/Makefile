@@ -1,7 +1,7 @@
 MOCHA_OPTS := --bail
-TS_FILES := $(shell find src/ -name '*.ts')
 NPM := pnpm
 NPM_BIN := ./node_modules/.bin
+TS_FILES := $(shell find src/ -name '*.ts')
 
 all: dist
 
@@ -15,11 +15,11 @@ help:
 clean:
 	rm -rf coverage dist node_modules
 
-dist: node_modules $(TS_FILES) tsconfig.json tsconfig-build.json Makefile
+dist: node_modules $(TS_FILES) tsconfig.json Makefile
 	rm -rf $@
 	$(NPM_BIN)/tsc -p tsconfig-build.json
 
-## lint:                run linter checks
+## lint:		run linter checks
 .PHONY: lint
 lint: node_modules
 	$(NPM_BIN)/prettier --check 'src/**/*.{js,ts,json,md,yml}'
@@ -32,10 +32,10 @@ node_modules: package.json
 ## test:		run unit tests (set FILE env variable to run test for that file only)
 .PHONY: test
 ifdef FILE
-test:
+test: dist
 	$(NPM_BIN)/c8 --reporter=none $(NPM_BIN)/ts-mocha $(MOCHA_OPTS) $(FILE)
 else
-test:
-	$(NPM_BIN)/c8 --reporter=none $(NPM_BIN)/ts-mocha $(MOCHA_OPTS) 'src/**/*.spec.ts' \
-		&& $(NPM_BIN)/c8 report --all --clean -n src -x 'src/**/*.spec.ts' -x 'src/types.*' --reporter=text
+test: dist
+	$(NPM_BIN)/c8 --reporter=none $(NPM_BIN)/ts-mocha $(MOCHA_OPTS) 'src/**/*.test.ts' \
+		&& $(NPM_BIN)/c8 report --all --clean -n src -x 'src/**/*.test.ts' -x 'src/types.*' --reporter=text
 endif

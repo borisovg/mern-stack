@@ -8,18 +8,12 @@ importers:
 
   apps/backend:
     dependencies:
-      '@types/uuid':
-        specifier: ^9.0.8
-        version: 9.0.8
       mongo-api-server:
         specifier: workspace:^
         version: link:../../libs/mongo-api-server
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
-      uuid:
-        specifier: ^9.0.1
-        version: 9.0.1
       zod:
         specifier: ^3.22.5
         version: 3.22.5
@@ -60,6 +54,9 @@ importers:
       sinon:
         specifier: ^17.0.1
         version: 17.0.1
+      test-helpers:
+        specifier: workspace:^
+        version: link:../../libs/test-helpers
       ts-mocha:
         specifier: ^10.0.0
         version: 10.0.0(mocha@10.4.0)
@@ -81,6 +78,9 @@ importers:
       '@elastic/ecs-pino-format':
         specifier: ^1.5.0
         version: 1.5.0
+      '@types/uuid':
+        specifier: ^9.0.8
+        version: 9.0.8
       express:
         specifier: ^4.19.2
         version: 4.19.2
@@ -93,6 +93,9 @@ importers:
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
+      uuid:
+        specifier: ^9.0.1
+        version: 9.0.1
     devDependencies:
       '@types/express':
         specifier: ^4.17.21
@@ -145,6 +148,58 @@ importers:
       undici:
         specifier: ^6.13.0
         version: 6.13.0
+
+  libs/test-helpers:
+    dependencies:
+      tslib:
+        specifier: ^2
+        version: 2.6.2
+      undici:
+        specifier: ^6.13.0
+        version: 6.13.0
+    devDependencies:
+      '@types/mocha':
+        specifier: ^10
+        version: 10.0.6
+      '@types/node':
+        specifier: ^20
+        version: 20.12.7
+      '@types/sinon':
+        specifier: ^17
+        version: 17.0.3
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^7
+        version: 7.7.0(@typescript-eslint/parser@7.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5)
+      '@typescript-eslint/parser':
+        specifier: ^7
+        version: 7.7.0(eslint@8.57.0)(typescript@5.4.5)
+      c8:
+        specifier: ^9
+        version: 9.1.0
+      eslint:
+        specifier: ^8
+        version: 8.57.0
+      eslint-config-prettier:
+        specifier: ^9
+        version: 9.1.0(eslint@8.57.0)
+      eslint-plugin-import:
+        specifier: ^2
+        version: 2.29.1(@typescript-eslint/parser@7.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)
+      mocha:
+        specifier: ^10
+        version: 10.4.0
+      prettier:
+        specifier: ^3
+        version: 3.2.5
+      sinon:
+        specifier: ^17
+        version: 17.0.1
+      ts-mocha:
+        specifier: ^10
+        version: 10.0.0(mocha@10.4.0)
+      typescript:
+        specifier: ^5
+        version: 5.4.5
 
 packages:
 

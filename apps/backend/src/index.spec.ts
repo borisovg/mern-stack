@@ -1,16 +1,23 @@
 import { createSandbox } from 'sinon';
-import * as start from './start';
+import * as server from 'mongo-api-server';
 import { strictEqual } from 'assert';
 
 describe('index', () => {
   const sandbox = createSandbox();
 
+  beforeEach(() => {
+    const path = require.resolve('.');
+    delete require.cache[path];
+  });
+
   afterEach(sandbox.restore);
 
-  it('should run the start function', () => {
-    const spy = sandbox.stub(start, 'start');
+  it('should run the start function in production mode', () => {
+    const spy = sandbox.stub(server, 'load');
 
-    require('./index');
+    sandbox.define(process.env, 'NODE_ENV', 'production');
+
+    require('.');
     strictEqual(spy.callCount, 1);
   });
 });

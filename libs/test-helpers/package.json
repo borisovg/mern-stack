@@ -1,0 +1,34 @@
+{
+  "name": "test-helpers",
+  "description": "Assorted test helpers",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "lint": "make lint",
+    "prepublishOnly": "make",
+    "test": "make test"
+  },
+  "dependencies": {
+    "tslib": "^2",
+    "undici": "^6.13.0"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10",
+    "@types/node": "^20",
+    "@types/sinon": "^17",
+    "@typescript-eslint/eslint-plugin": "^7",
+    "@typescript-eslint/parser": "^7",
+    "c8": "^9",
+    "eslint": "^8",
+    "eslint-config-prettier": "^9",
+    "eslint-plugin-import": "^2",
+    "mocha": "^10",
+    "prettier": "^3",
+    "sinon": "^17",
+    "ts-mocha": "^10",
+    "typescript": "^5"
+  },
+  "packageManager": "pnpm@9.0.4+sha512.c374b52de3de88c58fd8333df664a737279cdb0e1344ba4054d3b1fffa9a1a3670854f755dca4f16adea3f14be9896a7fcaf167409fe0c1ad60475271dafe81a"
+}

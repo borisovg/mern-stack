@@ -1,4 +1,3 @@
-import { makeUuid } from '../../helpers';
 import type { ServiceRegistry } from '../../types';
 import type { Bookmark, CreateBookmarkRequest } from './schemas';
 
@@ -6,7 +5,7 @@ export class BookmarksModel {
   constructor(private sr: ServiceRegistry) {}
 
   async create(doc: CreateBookmarkRequest) {
-    const uuid = makeUuid();
+    const uuid = this.sr.uuid.v4();
 
     await this.sr.bookmarks.collection.insertOne({ ...doc, uuid });
     return { uuid };

@@ -12,10 +12,12 @@
   "dependencies": {
     "@borisovg/service-core": "^2.1.2",
     "@elastic/ecs-pino-format": "^1.5.0",
+    "@types/uuid": "^9.0.8",
     "express": "^4.19.2",
     "mongodb": "^6.5.0",
     "pino": "^8.20.0",
-    "tslib": "^2.6.2"
+    "tslib": "^2.6.2",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
