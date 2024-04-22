@@ -1,7 +1,7 @@
 import { load } from 'mongo-api-server';
 import z from 'zod';
 
-const sr = await load('');
+const sr = await load();
 const collection = sr.mongo.db('test').collection('bookmarks');
 
 const createSchema = z
