@@ -1,0 +1,15 @@
+meta {
+  name: Delete Bookmark
+  type: http
+  seq: 4
+}
+
+delete {
+  url: http://localhost:8000/api/bookmarks/{{uuid}}
+  body: none
+  auth: none
+}
+
+vars:pre-request {
+  uuid: 8271d815-b328-45d3-97c6-1b52e15979fc
+}

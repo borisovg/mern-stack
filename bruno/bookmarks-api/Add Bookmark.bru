@@ -1,0 +1,33 @@
+meta {
+  name: Add Bookmark
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8000/api/bookmarks
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "title":"A Bookmark",
+    "url":"http://example.com"
+  }
+}
+
+script:pre-request {
+  function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+      }
+  }
+  
+  
+}
