@@ -4,6 +4,7 @@ NPM_BIN := ./node_modules/.bin
 all: 
 
 node_modules: package.json
+	cd ../.. && make
 	$(NPM) install || (rm -rf $@; exit 1)
 	test -d $@ && touch $@ || true
 

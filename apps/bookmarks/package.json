@@ -5,6 +5,7 @@
   "scripts": {
     "lint": "make lint",
     "prepublishOnly": "make",
+    "start:dev": "make start-dev",
     "test": "make test"
   },
   "dependencies": {

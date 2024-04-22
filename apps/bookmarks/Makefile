@@ -26,6 +26,7 @@ lint: node_modules
 	$(NPM_BIN)/eslint src/ --max-warnings 0
 
 node_modules: package.json
+	cd ../.. && make
 	$(NPM) install || (rm -rf $@; exit 1)
 	test -d $@ && touch $@ || true
 
