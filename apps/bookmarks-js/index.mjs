@@ -32,7 +32,7 @@ sr.express.app.post('/api/bookmarks', async (req, res) => {
       await collection.insertOne({ uuid, ...body });
       res.json({ result: { uuid } });
     } catch (e) {
-      res.status(500);
+      res.status(500).json({ error: e.message });
     }
   } catch (e) {
     res.status(400).json({ error: e.message });
