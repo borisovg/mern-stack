@@ -83,67 +83,6 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0
 
-  apps/bookmarks-ts:
-    dependencies:
-      mongo-api-server:
-        specifier: workspace:^
-        version: link:../../libs/mongo-api-server
-      tslib:
-        specifier: ^2.6.2
-        version: 2.6.2
-      zod:
-        specifier: ^3.22.5
-        version: 3.22.5
-    devDependencies:
-      '@types/mocha':
-        specifier: ^10.0.6
-        version: 10.0.6
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.12.7
-      '@types/sinon':
-        specifier: ^17.0.3
-        version: 17.0.3
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^7.7.0
-        version: 7.7.0(@typescript-eslint/parser@7.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5)
-      '@typescript-eslint/parser':
-        specifier: ^7.7.0
-        version: 7.7.0(eslint@8.57.0)(typescript@5.4.5)
-      c8:
-        specifier: ^9.1.0
-        version: 9.1.0
-      eslint:
-        specifier: ^8.57.0
-        version: 8.57.0
-      eslint-config-prettier:
-        specifier: ^9.1.0
-        version: 9.1.0(eslint@8.57.0)
-      eslint-plugin-import:
-        specifier: ^2.29.1
-        version: 2.29.1(@typescript-eslint/parser@7.7.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)
-      mocha:
-        specifier: ^10.4.0
-        version: 10.4.0
-      nodemon:
-        specifier: ^3.1.0
-        version: 3.1.0
-      prettier:
-        specifier: ^3.2.5
-        version: 3.2.5
-      sinon:
-        specifier: ^17.0.1
-        version: 17.0.1
-      ts-mocha:
-        specifier: ^10.0.0
-        version: 10.0.0(mocha@10.4.0)
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.12.7)(typescript@5.4.5)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.4.5
-
   libs/mongo-api-server:
     dependencies:
       '@borisovg/service-core':
