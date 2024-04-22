@@ -11,6 +11,11 @@ type Context = {
       getEvent: ReturnType<ServiceRegistry['ecs']['makeEventFn']>;
     }
   >;
+  trace: {
+    spanId?: string;
+    traceId?: string;
+    traceparent?: string;
+  };
 };
 
 export function $onBind(sr: ServiceRegistry) {
@@ -28,9 +33,17 @@ export class CtxModule {
     return this.als.getStore();
   }
 
+  getTraceMeta(ctx?: Context) {
+    ctx = ctx || this.get();
+    return ctx
+      ? { trace: { id: ctx.trace.traceId }, span: { id: ctx.trace.spanId } }
+      : {};
+  }
+
   make() {
     const ctx: Context = {
       mongoQueries: new Map(),
+      trace: {},
     };
 
     return ctx;

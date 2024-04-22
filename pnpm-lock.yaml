@@ -164,6 +164,9 @@ importers:
       pino:
         specifier: ^8.20.0
         version: 8.20.0
+      tctx:
+        specifier: ^0.2.0
+        version: 0.2.0
       tslib:
         specifier: ^2.6.2
         version: 2.6.2
@@ -344,6 +347,10 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
+
+  '@lukeed/csprng@1.1.0':
+    resolution: {integrity: sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==}
+    engines: {node: '>=8'}
 
   '@mongodb-js/saslprep@1.1.5':
     resolution: {integrity: sha512-XLNOMH66KhJzUJNwT/qlMnS4WsNDWD5ASdyaSH3EtK+F4r/CFGa3jT4GNi4mfOitGvWXtdLgQJkQjxSVrio+jA==}
@@ -1749,6 +1756,9 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
+  tctx@0.2.0:
+    resolution: {integrity: sha512-+pcs0y6JP6enhH+DbURjHaVTgdVKOxWqt/5zWx2qvhE8ZGAI9U5D197R3w6ZkFtrgntKfrZcvMRFDztI7VRVSg==}
+
   test-exclude@6.0.0:
     resolution: {integrity: sha512-cAGWPIyOHU6zlmg88jwm7VRyXnMN7iV68OGAbYDk/Mh/xC/pzVPlQtY6ngoIH/5/tciuhGfvESU8GrHrcxD56w==}
     engines: {node: '>=8'}
@@ -2029,6 +2039,8 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
+
+  '@lukeed/csprng@1.1.0': {}
 
   '@mongodb-js/saslprep@1.1.5':
     dependencies:
@@ -3631,6 +3643,10 @@ snapshots:
       has-flag: 4.0.0
 
   supports-preserve-symlinks-flag@1.0.0: {}
+
+  tctx@0.2.0:
+    dependencies:
+      '@lukeed/csprng': 1.1.0
 
   test-exclude@6.0.0:
     dependencies:
