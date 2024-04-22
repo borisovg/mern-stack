@@ -30,7 +30,7 @@ describe('modules/api/create', () => {
 
   afterEach(sandbox.restore);
 
-  const data = { title: 'test-title', url: 'test-url' };
+  const data = { title: 'test-title', url: 'http://example.com' };
 
   it('should add a bookmark', async () => {
     const uuid = 'test-uuid';
